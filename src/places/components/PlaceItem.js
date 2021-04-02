@@ -4,6 +4,7 @@ import './PlaceItem.css'
 
 import Button from '../../shared/components/FormElement/Button'
 import Model from '../../shared/components/UIElements/Model'
+import Map from '../../shared/components/UIElements/Map'
 const PlaceItem=(props)=> {
     const [showMap, setShowMap] = useState(false)
 
@@ -18,13 +19,13 @@ const PlaceItem=(props)=> {
         <Model 
             show={showMap} 
             onCancel={closeMapHandler} 
-            header={props.header}
+            header={props.address}
             contentClass="place-item__modal-content"
-            footerClass='place-item__modal-action'
+            footerClass='place-item__modal-actions'
             footer={<Button onClick={closeMapHandler}>CLOSE</Button>}
         >
         <div className="map-container">
-            <h2>The Map</h2>
+            <Map center={props.coordinate} zoom={16}/>
         </div>
         </Model>
         <li className="place-item">
